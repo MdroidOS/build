@@ -6280,17 +6280,17 @@ otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 afterlife: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(AFTERLIFE_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(AFTERLIFE_TARGET_PACKAGE) > $(AFTERLIFE_TARGET_PACKAGE).md5sum
-	echo -e "==============================================="                                                                                    
-  echo -e "     ##     ##               ##  #    ##      
-  echo -e "     ##    #    #            #       #        
-  echo -e "    # #    ##  ###   #  # #  #   #   ##    #  
-  echo -e "   ####    #   #    ### ##   #   #   #    ### 
-  echo -e "   #  #    #   #   ##   #    # # #   #   ##   
-  echo -e "  ##  ##   #   ##   ### #   #### #   #    ### 
-  echo -e "      #                         #         
-  echo -e "     ##                        ##         
-  echo -e "==============================================="
-  echo -e ""
+	echo -e "==============================================="
+	echo -e "     ##     ##               ##  #    ##      
+	echo -e "     ##    #    #            #       #        
+	echo -e "    # #    ##  ###   #  # #  #   #   ##    #  
+	echo -e "   ####    #   #    ### ##   #   #   #    ### 
+	echo -e "   #  #    #   #   ##   #    # # #   #   ##   
+	echo -e "  ##  ##   #   ##   ### #   #### #   #    ### 
+	echo -e "      #                         #         
+	echo -e "     ##                        ##         
+	echo -e "==============================================="
+	echo -e ""
 	@echo "**Package completed"**: $(AFTERLIFE_TARGET_PACKAGE)"
 
 ifeq ($(BOARD_BUILD_RETROFIT_DYNAMIC_PARTITIONS_OTA_PACKAGE),true)
