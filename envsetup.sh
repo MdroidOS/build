@@ -1726,7 +1726,7 @@ function mka() {
             m "$@" -j `sysctl hw.ncpu|cut -d" " -f2`
             ;;
         *)
-            m "$@" -j `cat /proc/cpuinfo | grep "^processor" | wc -l`
+            schedtool -B -n 1 -e ionice -n 1 make -j `cat /proc/cpuinfo | grep "^processor" | wc -l` "$@"
             ;;
     esac
 }
@@ -2010,4 +2010,3 @@ fi
 
 export ANDROID_BUILD_TOP=$(gettop)
 
-. $ANDROID_BUILD_TOP/vendor/afterlife/build/envsetup.sh
