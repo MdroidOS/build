@@ -155,7 +155,7 @@ function check_product()
         return
     fi
     
-    if (echo -n $1 | grep -q -e "^afterlife_) ; then
+    if (echo -n $1 | grep -q -e "^afterlife_") ; then
         AFTERLIFE_BUILD=$(echo -n $1 | sed -e 's/^afterlife_//g')
     else
         AFTERLIFE_BUILD=
