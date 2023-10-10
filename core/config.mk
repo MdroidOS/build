@@ -357,8 +357,8 @@ FIND_LEAVES_EXCLUDES := $(addprefix --prune=, $(SCAN_EXCLUDE_DIRS) .repo .git)
 
 -include vendor/extra/BoardConfigExtra.mk
 
-ifneq ($(AFTERLIFE_BUILD),)
-    include vendor/afterlife/config/BoardConfigAfterlife.mk
+ifneq ($(MDROIDTILE_BUILD),)
+    include vendor/mdroidtile/config/BoardConfigMdroidtile.mk
 endif
 
 # The build system exposes several variables for where to find the kernel
@@ -1271,11 +1271,11 @@ dont_bother_goals := out product-graph
 # consistency with those defined in BoardConfig.mk files.
 include $(BUILD_SYSTEM)/android_soong_config_vars.mk
 
-ifneq ($(AFTERLIFE_BUILD),)
-ifneq ($(wildcard device/afterlife/sepolicy/common/sepolicy.mk),)
+ifneq ($(MDROIDTILE_BUILD),)
+ifneq ($(wildcard device/mdroidtile/sepolicy/common/sepolicy.mk),)
 ## We need to be sure the global selinux policies are included
 ## last, to avoid accidental resetting by device configs
-$(eval include device/afterlife/sepolicy/common/sepolicy.mk)
+$(eval include device/mdroidtile/sepolicy/common/sepolicy.mk)
 endif
 endif
 
