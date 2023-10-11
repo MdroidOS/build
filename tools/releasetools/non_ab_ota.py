@@ -220,13 +220,35 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   # Dump fingerprints
   script.Print("Target: {}".format(target_info.fingerprint))
 
+  android_version = target_info.GetBuildProp("ro.build.version.release")
+  build_id = target_info.GetBuildProp("ro.build.id")
+  build_date = target_info.GetBuildProp("ro.build.date")
+  security_patch = target_info.GetBuildProp("ro.build.version.security_patch")
+  device = target_info.GetBuildProp("ro.product.device")
+  maintainer = target_info.GetBuildProp("ro.mdroidtile.maintainer")
+
+  script.Print("==================================================================");
+  script.Print("                                                                  ");
+  script.Print(" MM    MM      dd               iii      dd TTTTTTT iii lll       ");
+  script.Print(" MMM  MMM      dd rr rr   oooo           dd   TTT       lll   eee ");
+  script.Print(" MM MM MM  dddddd rrr  r oo  oo iii  dddddd   TTT   iii lll ee   e");
+  script.Print(" MM    MM dd   dd rr     oo  oo iii dd   dd   TTT   iii lll eeeee ");
+  script.Print(" MM    MM  dddddd rr      oooo  iii  dddddd   TTT   iii lll  eeeee");
+  script.Print("                                                                  ");
+  script.Print("==================================================================");
+  script.Print(" Android version  : %s"%(android_version));
+  script.Print(" Build id         : %s"%(build_id));
+  script.Print(" Build date       : %s"%(build_date));
+  script.Print(" Security patch   : %s"%(security_patch));
+  script.Print(" Maintainer       : %s"%(maintainer));
+  script.Print(" Device           : %s"%(device));
+  script.Print("==================================================================");
   device_specific.FullOTA_InstallBegin()
 
   CopyInstallTools(output_zip)
   script.UnpackPackageDir("install", "/tmp/install")
   script.SetPermissionsRecursive("/tmp/install", 0, 0, 0o755, 0o644, None, None)
   script.SetPermissionsRecursive("/tmp/install/bin", 0, 0, 0o755, 0o755, None, None)
-
   # All other partitions as well as the data wipe use 10% of the progress, and
   # the update of the system partition takes the remaining progress.
   system_progress = 0.9 - (len(block_diff_dict) - 1) * 0.1
